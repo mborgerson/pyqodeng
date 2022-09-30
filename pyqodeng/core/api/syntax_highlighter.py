@@ -10,7 +10,7 @@ from pygments.token import Token, Punctuation
 from pygments.util import ClassNotFound
 from pyqodeng.core.api.mode import Mode
 from pyqodeng.core.api.utils import drift_color
-from qtpy import QtGui, QtCore, QtWidgets
+from PySide6 import QtGui, QtCore, QtWidgets
 
 
 def _logger():
@@ -286,11 +286,11 @@ class SyntaxHighlighter(QtGui.QSyntaxHighlighter, Mode):
         if not color_scheme:
             color_scheme = ColorScheme('qt')
         self._color_scheme = color_scheme
-        self._spaces_ptrn = QtCore.QRegExp(r'[ \t]+')
+        self._spaces_ptrn = QtCore.QRegularExpression(r'[ \t]+')
         #: Fold detector. Set it to a valid FoldDetector to get code folding
         #: to work. Default is None
         self.fold_detector = None
-        self.WHITESPACES = QtCore.QRegExp(r'\s+')
+        self.WHITESPACES = QtCore.QRegularExpression(r'\s+')
 
     def on_state_changed(self, state):
         if self._on_close:

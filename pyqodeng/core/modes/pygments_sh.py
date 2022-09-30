@@ -20,7 +20,7 @@ from pygments.styles import get_style_by_name, get_all_styles
 from pygments.token import Whitespace, Comment, Token
 from pygments.util import ClassNotFound
 from qtpy import QtGui
-from qtpy.QtCore import QRegExp
+from PySide6.QtCore import QRegularExpression
 
 from pyqodeng.core.api.syntax_highlighter import (
     SyntaxHighlighter, ColorScheme, TextBlockUserData)
@@ -297,7 +297,7 @@ class PygmentsSH(SyntaxHighlighter):
 
             # spaces
             text = original_text
-            expression = QRegExp(r'\s+')
+            expression = QRegularExpression(r'\s+')
             index = expression.indexIn(text, 0)
             while index >= 0:
                 index = expression.pos(0)
