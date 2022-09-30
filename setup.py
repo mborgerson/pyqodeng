@@ -66,7 +66,7 @@ def readme():
 
 
 setup(
-    name='pyqodeng.core',
+    name='pyqodeng',
     namespace_packages=['pyqodeng'],
     version=__version__,
     packages=[p for p in find_packages() if 'test' not in p],
