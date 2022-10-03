@@ -276,7 +276,7 @@ def test_select_whole_line(editor):
 
 
 def test_extended_selection(editor):
-    for line, column, text in [(8, 15, 'pyqode.core.api.utils'),
+    for line, column, text in [(8, 15, 'pyqodeng.core.api.utils'),
                                (8, 1, 'from')]:
         editor.file.open(__file__)
         QTest.qWait(1000)

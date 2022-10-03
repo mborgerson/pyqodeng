@@ -1,5 +1,5 @@
 import weakref
-from qtpy import QtCore, QtWidgets
+from qtpy import QtCore, QtGui, QtWidgets
 from pyqodeng.core import api
 
 
@@ -33,7 +33,7 @@ class CursorHistoryMode(api.Mode):
     def __init__(self):
         super(CursorHistoryMode, self).__init__()
         self._prev_pos = 0, 0
-        self.undo_stack = QtWidgets.QUndoStack()
+        self.undo_stack = QtGui.QUndoStack()
         self.undo_stack.setUndoLimit(10)
 
     def on_state_changed(self, state):

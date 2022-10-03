@@ -249,15 +249,16 @@ def test_mouse_events(editor):
     editor.mouseReleaseEvent(QtGui.QMouseEvent(
         QtCore.QEvent.MouseButtonRelease, QtCore.QPoint(10, 10),
         QtCore.Qt.RightButton, QtCore.Qt.RightButton, QtCore.Qt.NoModifier))
-    if os.environ['QT_API'].lower() == 'pyqt5':
-        editor.wheelEvent(QtGui.QWheelEvent(
-            QtCore.QPoint(10, 10), editor.mapToGlobal(QtCore.QPoint(10, 10)),
-            QtCore.QPoint(0, 1), QtCore.QPoint(0, 1), 1,
-            QtCore.Qt.Vertical, QtCore.Qt.MidButton, QtCore.Qt.NoModifier))
-    else:
-        editor.wheelEvent(QtGui.QWheelEvent(
-            QtCore.QPoint(10, 10), 1, QtCore.Qt.MidButton,
-            QtCore.Qt.NoModifier))
+    editor.wheelEvent(QtGui.QWheelEvent(
+        QtCore.QPoint(10, 10),
+        editor.mapToGlobal(QtCore.QPoint(10, 10)),
+        QtCore.QPoint(0, 1),
+        QtCore.QPoint(0, 1),
+        QtCore.Qt.MidButton,
+        QtCore.Qt.NoModifier,
+        QtCore.Qt.Vertical,
+        True,
+    ))
     editor.mouseMoveEvent(QtGui.QMouseEvent(
         QtCore.QEvent.MouseMove, QtCore.QPoint(10, 10),
         QtCore.Qt.RightButton, QtCore.Qt.RightButton, QtCore.Qt.NoModifier))

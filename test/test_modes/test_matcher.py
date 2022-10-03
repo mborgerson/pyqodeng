@@ -14,8 +14,8 @@ example_tuple = (
 
 
 from test.helpers import editor_open
-from pyqodent.core.api import TextHelper
-from pyqodent.core import modes
+from pyqodeng.core.api import TextHelper
+from pyqodeng.core import modes
 from qtpy import QtGui
 
 

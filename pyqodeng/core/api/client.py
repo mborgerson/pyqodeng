@@ -349,7 +349,7 @@ class BackendProcess(QtCore.QProcess):
     def __init__(self, parent):
         super(BackendProcess, self).__init__(parent)
         self.started.connect(self._on_process_started)
-        self.error.connect(self._on_process_error)
+        self.errorOccurred.connect(self._on_process_error)
         self.finished.connect(self._on_process_finished)
         self.readyReadStandardOutput.connect(self._on_process_stdout_ready)
         self.readyReadStandardError.connect(self._on_process_stderr_ready)

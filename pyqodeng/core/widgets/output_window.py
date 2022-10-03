@@ -132,7 +132,7 @@ class OutputWindow(CodeEdit):
         self._process = QtCore.QProcess()
         self._process.readyReadStandardOutput.connect(self._read_stdout)
         self._process.readyReadStandardError.connect(self._read_stderr)
-        self._process.error.connect(self._on_process_error)
+        self._process.errorOccurred.connect(self._on_process_error)
         self._process.finished.connect(self._on_process_finished)
         self._input_handler = input_handler
         self._input_handler.edit = self
