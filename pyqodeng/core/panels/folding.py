@@ -9,7 +9,7 @@ from pyqodeng.core.api import TextBlockHelper, folding, TextDecoration, \
     DelayJobRunner
 from pyqodeng.core.api.folding import FoldScope
 from pyqodeng.core.api.panel import Panel
-from qtpy import QtCore, QtWidgets, QtGui, PYQT5_API, PYSIDE2_API
+from qtpy import QtCore, QtWidgets, QtGui, PYQT5_API, PYSIDE2_API, PYSIDE6_API
 from pyqodeng.core.api.utils import TextHelper, drift_color, keep_tc_pos
 
 

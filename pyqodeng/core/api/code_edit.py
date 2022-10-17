@@ -1270,14 +1270,14 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         # swap line up
         action = QtWidgets.QAction(_('Swap line up'), self)
         action.setShortcut(QtGui.QKeySequence(
-            QtCore.Qt.AltModifier + QtCore.Qt.Key_Up))
+            QtCore.Qt.AltModifier | QtCore.Qt.Key_Up))
         action.triggered.connect(self.swapLineUp)
         self.add_action(action, sub_menu=None)
         self.action_swap_line_up = action
         # swap line down
         action = QtWidgets.QAction(_('Swap line down'), self)
         action.setShortcut(QtGui.QKeySequence(
-            QtCore.Qt.AltModifier + QtCore.Qt.Key_Down))
+            QtCore.Qt.AltModifier | QtCore.Qt.Key_Down))
         action.triggered.connect(self.swapLineDown)
         self.add_action(action, sub_menu=None)
         self.action_swap_line_down = action
