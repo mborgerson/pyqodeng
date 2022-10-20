@@ -71,7 +71,7 @@ setup(
     version=__version__,
     packages=[p for p in find_packages() if 'test' not in p],
     keywords=["CodeEdit PyQt source code editor widget qt"],
-    url='https://github.com/ltfish/pyqodeng.core',
+    url='https://github.com/angr/pyqodeng',
     license='MIT',
     author='Colin Duquesnoy and others',
     author_email='colin.duquesnoy@gmail.com',
