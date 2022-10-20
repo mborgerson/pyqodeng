@@ -512,7 +512,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
 
         self.setMouseTracking(True)
         self.setCenterOnScroll(True)
-        self.setLineWrapMode(self.NoWrap)
+        self.setLineWrapMode(QtWidgets.QPlainTextEdit.NoWrap)
         self.setCursorWidth(2)
         self._auto_reset_stylesheet = True
         self._reset_stylesheet()
