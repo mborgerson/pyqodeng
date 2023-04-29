@@ -196,7 +196,7 @@ class ColorScheme:
         return qcolor
 
 
-class SyntaxHighlighter(QtGui.QSyntaxHighlighter, Mode):
+class SyntaxHighlighter(Mode, QtGui.QSyntaxHighlighter):
     """
     Abstract base class for syntax highlighter modes.
 
