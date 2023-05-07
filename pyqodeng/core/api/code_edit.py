@@ -888,12 +888,17 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
 
     def eventFilter(self, obj, event):
         if obj == self and event.type() == QtCore.QEvent.KeyPress:
-            if event.key() == QtCore.Qt.Key_X and \
-                    int(event.modifiers()) == QtCore.Qt.ControlModifier:
+            modifiers = event.modifiers()
+            if event.key() == QtCore.Qt.Key_X and (
+                    modifiers == QtCore.Qt.ControlModifier if isinstance(modifiers, int)
+                    else modifiers & QtCore.Qt.ControlModifier
+            ):
                 self.cut()
                 return True
-            if event.key() == QtCore.Qt.Key_C and \
-                    int(event.modifiers()) == QtCore.Qt.ControlModifier:
+            if event.key() == QtCore.Qt.Key_C and (
+                    modifiers == QtCore.Qt.ControlModifier if isinstance(modifiers, int)
+                    else modifiers & QtCore.Qt.ControlModifier
+            ):
                 self.copy()
                 return True
         return False
@@ -1021,18 +1026,22 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         self.key_pressed.emit(event)
         state = event.isAccepted()
         if not event.isAccepted():
-            if event.key() == QtCore.Qt.Key_Tab and event.modifiers() == \
-                    QtCore.Qt.NoModifier:
+            modifiers = event.modifiers()
+            if event.key() == QtCore.Qt.Key_Tab and modifiers == QtCore.Qt.NoModifier:
                 self.indent()
                 event.accept()
-            elif event.key() == QtCore.Qt.Key_Backtab and \
-                    event.modifiers() == QtCore.Qt.NoModifier:
+            elif event.key() == QtCore.Qt.Key_Backtab and modifiers == QtCore.Qt.NoModifier:
                 self.un_indent()
                 event.accept()
-            elif event.key() == QtCore.Qt.Key_Home and \
-                    int(event.modifiers()) & QtCore.Qt.ControlModifier == 0:
+            elif event.key() == QtCore.Qt.Key_Home and (
+                    modifiers & QtCore.Qt.ControlModifier == 0 if isinstance(modifiers, int)
+                    else bool(modifiers & QtCore.Qt.ControlModifier) is False
+            ):
                 self._do_home_key(
-                    event, int(event.modifiers()) & QtCore.Qt.ShiftModifier)
+                    event,
+                    modifiers & QtCore.Qt.ShiftModifier if isinstance(modifiers, int)
+                    else bool(modifiers & QtCore.Qt.ShiftModifier)
+                )
             if not event.isAccepted():
                 event.setAccepted(initial_state)
                 super(CodeEdit, self).keyPressEvent(event)
