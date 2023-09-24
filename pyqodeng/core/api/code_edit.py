@@ -1012,7 +1012,6 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         super(CodeEdit, self).paintEvent(e)
         self.painted.emit(e)
 
-    @skip_if_readonly
     def keyPressEvent(self, event):
         """
         Overrides the keyPressEvent to emit the key_pressed signal.
@@ -1021,6 +1020,10 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
 
         :param event: QKeyEvent
         """
+        if self.isReadOnly():
+            super().keyPressEvent(event)
+            return
+
         initial_state = event.isAccepted()
         event.ignore()
         self.key_pressed.emit(event)
@@ -1050,13 +1053,16 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         self.post_key_pressed.emit(event)
         event.setAccepted(new_state)
 
-    @skip_if_readonly
     def keyReleaseEvent(self, event):
         """
         Overrides keyReleaseEvent to emit the key_released signal.
 
         :param event: QKeyEvent
         """
+        if self.isReadOnly():
+            super().keyReleaseEvent(event)
+            return
+
         initial_state = event.isAccepted()
         event.ignore()
         self.key_released.emit(event)
